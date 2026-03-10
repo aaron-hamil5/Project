@@ -3,6 +3,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 var app = builder.Build();
 
+//We want to use default 'Index.cshtml'
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.MapRazorPages();
