@@ -11,5 +11,23 @@
     <body>
         <h1>Chinook Console</h1>
         <h2>@Model.Heading</h2> <!-- Displays the page the user is on -->
+
+        <table border="1">
+            <th>AlbumID</th> <th>Title</th> <th>ArtistID</th> <th>&nbsp;</th>
+            @foreach (Album album in @Model.Albums){
+                <tr>
+                    <td>@album.AlbumId</td>
+                    <td>@album.Title</td>
+                    <td>@album.ArtistId</td>
+                    <td>
+                        <form action="~/Delete" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="hdnAlbumID" value="@album.AlbumId"/>
+                            <input type="submit" value="Delete"/>
+                        </form>
+                    </td>
+                </tr> 
+            }
+        </table>
     </body>
 </html>

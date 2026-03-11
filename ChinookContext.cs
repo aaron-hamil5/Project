@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChinookContext{
     public class ChinookDatabase : DbContext{
-        public DbSet<Albums>Albums{get; set;}
-        public DbSet<Artists>Artists{get; set;}
-        public DbSet<Tracks>Tracks{get; set;}
+        public DbSet<Album>Albums{get; set;}
+        public DbSet<Artist>Artists{get; set;}
+        public DbSet<Track>Tracks{get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             optionsBuilder.UseSqlite("Filename=chinook.db");
