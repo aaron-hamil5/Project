@@ -1,5 +1,5 @@
 @page
-<!-- Linking tthe ViewAlbums class to the HTML File -->
+<!-- Linking the ViewAlbums class to the HTML File -->
 @model Project.Pages.ViewAlbums
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +20,10 @@
                     <td>@album.Title</td>
                     <td>@album.ArtistId</td>
                     <td>
-                        <form action="~/Delete" method="post">
+                        <form action="~/Details" method="post">
                             @Html.AntiForgeryToken()
                             <input type="hidden" name="hdnAlbumID" value="@album.AlbumId"/>
-                            <input type="submit" value="Delete"/>
+                            <input type="submit" value="Details"/>
                         </form>
                     </td>
                 </tr> 

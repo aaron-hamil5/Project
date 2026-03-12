@@ -1,0 +1,22 @@
+@page
+<!-- Linking the ViewTracks class to the HTML File -->
+@model Project.Pages.ViewTracks
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chinook Console</title>
+    </head>
+    <body>
+        <h1>Chinook Console</h1>
+        <h2>@Model.Heading</h2> <!-- Displays the page the user is on -->
+        <h3>@Model.AlbumName</h3>
+
+        <ol>
+            @foreach (AlbumTrack track in @Model.AlbumTrack){
+                <li>@track.Name</li>
+            }
+        </ol>
+    </body>
+</html>
