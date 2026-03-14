@@ -13,6 +13,7 @@ namespace Project.Pages{
         public void OnPost(){
             Heading = "Viewing Tracks";
             ChinookDatabase db = new ChinookDatabase();
+            //Linking the Album and Tracks Table together
             AlbumTrack = db.Albums
             .Join(
                 db.Tracks, a => a.AlbumId, t => t.AlbumId,
@@ -30,11 +31,14 @@ namespace Project.Pages{
                     UnitPrice = t.UnitPrice,
                 }
             )
+            //Filtering it from the AlbumID
             .Where(a => a.AlbumId == Int32.Parse(Request.Form["hdnAlbumID"]))
             .ToList();
 
+            //Searching the Artist Table for the name by the Artist ID
             ArtistName = db.Artists.Find(AlbumTrack[0].ArtistId).Name;
 
+            //Displaying the Album name with the Artist name
             AlbumName = $"{AlbumTrack[0].Title} By {ArtistName}";
         }
         

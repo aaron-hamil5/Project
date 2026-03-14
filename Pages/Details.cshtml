@@ -6,15 +6,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Chinook Console</title>
+        <!-- Tab name Updates to Album Name -->
+        <title>@Model.AlbumName - Chinook</title>
     </head>
     <body>
         <h1>Chinook Console</h1>
         <h2>@Model.Heading</h2> <!-- Displays the page the user is on -->
         <h3>@Model.AlbumName</h3>
 
+        <!-- Creating a bullet point (Unorgenised) List -->
         <ol>
             @foreach (AlbumTrack track in @Model.AlbumTrack){
+                //Displays each Track name
                 <li>@track.Name</li>
             }
         </ol>
