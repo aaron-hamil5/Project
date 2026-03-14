@@ -24,6 +24,7 @@ public class Track{
 public class AlbumTrack{
     public Int32 AlbumId{get; set;}
     public required String Title{get; set;}
+    public Int32 ArtistId{get; set;}
     public Int32 TrackId{get; set;}
     public required String Name{get; set;}
     public Int32 MediaTypeId{get; set;}

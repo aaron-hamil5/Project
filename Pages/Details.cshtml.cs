@@ -6,6 +6,7 @@ namespace Project.Pages{
         //Creating a variable to hold what section of the page the user is in
         public required String Heading {get; set;}
         public required String AlbumName {get; set;}
+        public required String ArtistName{get;set;}
 
         public List<AlbumTrack>AlbumTrack{get; set;}
 
@@ -18,6 +19,7 @@ namespace Project.Pages{
                 (a,t) => new AlbumTrack(){
                     AlbumId = a.AlbumId,
                     Title = a.Title,
+                    ArtistId = a.ArtistId,
                     TrackId = t.TrackId,
                     Name = t.Name,
                     MediaTypeId = t.MediaTypeId,
@@ -31,7 +33,9 @@ namespace Project.Pages{
             .Where(a => a.AlbumId == Int32.Parse(Request.Form["hdnAlbumID"]))
             .ToList();
 
-            AlbumName = $"{AlbumTrack[0].Title} By {AlbumTrack[0].Title}";
+            ArtistName = db.Artists.Find(AlbumTrack[0].ArtistId).Name;
+
+            AlbumName = $"{AlbumTrack[0].Title} By {ArtistName}";
         }
         
     }
