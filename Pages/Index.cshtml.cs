@@ -1,10 +1,13 @@
 using ChinookContext;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Project.Pages{
     public class ViewAlbums : PageModel{
         //Creating a variable to hold what section of the page the user is in
         public required String Heading {get; set;}
+
+        public Boolean AccendingFilter {get; set;} = true;
 
         public List<ArtistAlbum>ArtistAlbums{get; set;}
 
@@ -25,6 +28,13 @@ namespace Project.Pages{
                     Title = alb.Title
                 }
             ).ToList();
+
+            if (AccendingFilter){
+                ArtistAlbums = ArtistAlbums.OrderBy(art => art.Name).ToList();
+            }
+            else{
+                ArtistAlbums = ArtistAlbums.OrderByDescending(art => art.Name).ToList();
+            }
         }
     }
 }

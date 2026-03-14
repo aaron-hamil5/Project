@@ -12,8 +12,37 @@
         <h1>Chinook Console</h1>
         <h2>@Model.Heading</h2> <!-- Displays the page the user is on -->
 
+        <div style="display:flex; ">
+            <section>
+                <h3>Add Artist</h3>
+                <form action="~/InsertArtist" method="post">
+                @Html.AntiForgeryToken()
+                    <p>Artist Name: <input type="text" name="tbxArtistName" required/></p>
+                    <input type="submit" value="Insert"/>
+                </form>
+            </section>
+
+            <section>
+                <h3>Add Album</h3>
+                <form action="~/Insert" method="post">
+                @Html.AntiForgeryToken()
+                    <p>Album Name: <input type="text" name="tbxAlbumName"/></p>
+
+                    <p>Artist: 
+                        <select name="ddmArtist">
+                            @foreach (ArtistAlbum artist in @Model.ArtistAlbums){
+                                <option value="@artist.ArtistId">@artist.Name</option>
+                            }
+                        </select>
+                    </p>
+
+                    <input type="submit" value="Insert"/>
+                </form>
+            </section>
+        </div>
+
         <table border="1">
-            <th>Album</th> <th>Artist</th> <th>&nbsp;</th>
+            <th>Album</th> <th>Artist</th> <th>&nbsp;</th> <th>&nbsp;</th>
             @foreach (ArtistAlbum album in @Model.ArtistAlbums){
                 <tr>
                     <td>@album.Title</td>
