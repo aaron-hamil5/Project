@@ -14,6 +14,7 @@ namespace Project.Pages{
             Heading = "Albums";
 
             ChinookDatabase db = new ChinookDatabase();
+            //Linking Artist and Album togeter
             ArtistAlbums = db.Artists.Join(
                 db.Albums, art => art.ArtistId, alb => alb.AlbumId,
                 (art,alb) => new ArtistAlbum()
