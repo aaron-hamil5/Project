@@ -13,12 +13,11 @@
         <h2>@Model.Heading</h2> <!-- Displays the page the user is on -->
 
         <table border="1">
-            <th>AlbumID</th> <th>Title</th> <th>ArtistID</th> <th>&nbsp;</th>
-            @foreach (Album album in @Model.Albums){
+            <th>Album</th> <th>Artist</th> <th>&nbsp;</th>
+            @foreach (ArtistAlbum album in @Model.ArtistAlbums){
                 <tr>
-                    <td>@album.AlbumId</td>
                     <td>@album.Title</td>
-                    <td>@album.ArtistId</td>
+                    <td>@album.Name</td>
                     <td>
                         <form action="~/Details" method="post">
                             @Html.AntiForgeryToken()

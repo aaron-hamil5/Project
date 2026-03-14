@@ -21,6 +21,13 @@ public class Track{
     public Double UnitPrice{get; set;}
 }
 
+public class ArtistAlbum{
+    public Int32 ArtistId{get; set;}
+    public required String Name{get; set;}
+    public Int32 AlbumId{get; set;}
+    public required String Title{get; set;}
+}
+
 public class AlbumTrack{
     public Int32 AlbumId{get; set;}
     public required String Title{get; set;}

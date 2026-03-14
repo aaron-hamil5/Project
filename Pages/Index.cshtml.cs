@@ -6,7 +6,7 @@ namespace Project.Pages{
         //Creating a variable to hold what section of the page the user is in
         public required String Heading {get; set;}
 
-        public List<Album>Albums{get; set;}
+        public List<ArtistAlbum>ArtistAlbums{get; set;}
 
         //OnGet gets called when the page loads.
         public void OnGet(){
@@ -14,7 +14,16 @@ namespace Project.Pages{
             Heading = "Albums";
 
             ChinookDatabase db = new ChinookDatabase();
-            Albums = db.Albums.ToList();
+            ArtistAlbums = db.Artists.Join(
+                db.Albums, art => art.ArtistId, alb => alb.AlbumId,
+                (art,alb) => new ArtistAlbum()
+                {
+                    ArtistId = art.ArtistId,
+                    Name = art.Name,
+                    AlbumId = alb.AlbumId,
+                    Title = alb.Title
+                }
+            ).ToList();
         }
     }
 }
