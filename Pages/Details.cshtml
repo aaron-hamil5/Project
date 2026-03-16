@@ -28,14 +28,14 @@
             @Html.AntiForgeryToken()
             <p>Track Name: <input type="text" name="tbxTrackName" required/></p>
             <p>Media Type:
-                <select name="ddmMedia">
+                <select name="ddmMedia" required>
                     @foreach (MediaType media in @Model.MediaTypes){
                         <option value="@media.MediaTypeId">@media.Name</option>
                     }
                 </select>
             </p>
             <p>Genre Type:
-                <select name="ddmGenre">
+                <select name="ddmGenre" required>
 
                     @foreach (Genre genres in @Model.Genres){
                         <option value="@genres.GenreId">@genres.Name</option>
@@ -43,9 +43,9 @@
                 </select>
             </p>
             <p>Composer: <input type="text" name="tbxComposerName"/></p>
-            <p>Length (ms): <input type="number" name="tbxLengthName"/></p>
-            <p>Size (bytes): <input type="number" name="tbxSizeName"/></p>
-            <p>Price (GBP): <input type="number" step="0.01" min="0.49" name="tbxPriceName"/></p>
+            <p>Length (ms): <input type="number" name="tbxLengthName" required/></p>
+            <p>Size (bytes): <input type="number" name="tbxSizeName" required/></p>
+            <p>Price (GBP): <input type="number" step="0.01" min="0.49" name="tbxPriceName" required/></p>
             <input type="hidden" name="hdnAlbumID" value="@Model._Album[0].AlbumId"/>
             <input type="submit" value="Insert"/>
         </form>

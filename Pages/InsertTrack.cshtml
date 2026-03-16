@@ -19,7 +19,7 @@
             <input type="hidden" name="hdnAlbumID" value="@Model.AlbumID"/>
             <input type="submit" value="Return to Album"/>
         </form>
-        <form action="~/Index" method="post">
+        <form action="~/Index" method="get">
             @Html.AntiForgeryToken()
             <input type="submit" value="Dashboard"/>
         </form>
