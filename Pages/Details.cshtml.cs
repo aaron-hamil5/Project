@@ -10,9 +10,15 @@ namespace Project.Pages{
 
         public List<AlbumTrack>AlbumTrack{get; set;}
 
+        public List<Album> _Album{get; set;}
+        
+
         public void OnPost(){
             Heading = "Viewing Tracks";
             ChinookDatabase db = new ChinookDatabase();
+
+            _Album = db.Albums.Where(a => a.AlbumId == Int32.Parse(Request.Form["hdnAlbumID"])).ToList();
+
             //Linking the Album and Tracks Table together
             AlbumTrack = db.Albums
             .Join(
@@ -36,10 +42,10 @@ namespace Project.Pages{
             .ToList();
 
             //Searching the Artist Table for the name by the Artist ID
-            ArtistName = db.Artists.Find(AlbumTrack[0].ArtistId).Name;
+            ArtistName = db.Artists.Find(_Album[0].ArtistId).Name;
 
             //Displaying the Album name with the Artist name
-            AlbumName = $"{AlbumTrack[0].Title} By {ArtistName}";
+            AlbumName = $"{_Album[0].Title} By {ArtistName}";
         }
         
     }

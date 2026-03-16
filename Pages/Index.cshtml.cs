@@ -19,7 +19,7 @@ namespace Project.Pages{
             ChinookDatabase db = new ChinookDatabase();
             //Linking Artist and Album togeter
             ArtistAlbums = db.Artists.Join(
-                db.Albums, art => art.ArtistId, alb => alb.AlbumId,
+                db.Albums, art => art.ArtistId, alb => alb.ArtistId,
                 (art,alb) => new ArtistAlbum()
                 {
                     ArtistId = art.ArtistId,
@@ -28,13 +28,6 @@ namespace Project.Pages{
                     Title = alb.Title
                 }
             ).ToList();
-
-            if (AccendingFilter){
-                ArtistAlbums = ArtistAlbums.OrderBy(art => art.Name).ToList();
-            }
-            else{
-                ArtistAlbums = ArtistAlbums.OrderByDescending(art => art.Name).ToList();
-            }
         }
     }
 }
