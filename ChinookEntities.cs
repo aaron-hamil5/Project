@@ -9,6 +9,16 @@ public class Artist{
     public required String Name{get; set;}
 }
 
+public class Genre{
+    public Int32 GenreId{get; set;}
+    public required String Name{get; set;}
+}
+
+public class MediaType{
+    public Int32 MediaTypeId{get; set;}
+    public required String Name{get; set;}
+}
+
 public class Track{
     public Int32 TrackId{get; set;}
     public required String Name{get; set;}

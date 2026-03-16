@@ -9,13 +9,18 @@ namespace Project.Pages{
         public required String ArtistName{get;set;}
 
         public List<AlbumTrack>AlbumTrack{get; set;}
-
         public List<Album> _Album{get; set;}
+
+        public List<Genre> Genres {get; set;}
+        public List<MediaType> MediaTypes {get; set;}
         
 
         public void OnPost(){
             Heading = "Viewing Tracks";
+
             ChinookDatabase db = new ChinookDatabase();
+            Genres = db.Genres.ToList();
+            MediaTypes = db.Media_Types.ToList();
 
             _Album = db.Albums.Where(a => a.AlbumId == Int32.Parse(Request.Form["hdnAlbumID"])).ToList();
 

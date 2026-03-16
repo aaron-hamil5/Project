@@ -7,6 +7,9 @@ namespace ChinookContext{
         public DbSet<Artist>Artists{get; set;}
         public DbSet<Track>Tracks{get; set;}
 
+        public DbSet<Genre>Genres{get; set;}
+        public DbSet<MediaType>Media_Types{get; set;}
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
             optionsBuilder.UseSqlite("Filename=chinook.db");
         }
