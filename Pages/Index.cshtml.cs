@@ -11,6 +11,8 @@ namespace Project.Pages{
 
         public List<ArtistAlbum>ArtistAlbums{get; set;}
 
+        public List<Artist> Artists {get; set;}
+
         //OnGet gets called when the page loads.
         public void OnGet(){
             //Setting the page title to Albums
@@ -27,7 +29,12 @@ namespace Project.Pages{
                     AlbumId = alb.AlbumId,
                     Title = alb.Title
                 }
-            ).ToList();
+            )
+            .OrderBy(a => a.Name)
+            .ToList();
+
+            //Getting the list of Artist
+            Artists = db.Artists.OrderBy(a => a.Name).ToList();
         }
     }
 }

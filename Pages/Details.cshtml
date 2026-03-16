@@ -21,5 +21,18 @@
                 <li>@track.Name</li>
             }
         </ol>
+
+        <!-- Section to add tracks -->
+        <h3>Add Artist</h3>
+        <form action="~/InsertTrack" method="post">
+            @Html.AntiForgeryToken()
+            <p>Track Name: <input type="text" name="tbxTrackName" required/></p>
+            <p>Composer: <input type="text" name="tbxComposerName"/></p>
+            <p>Length (ms): <input type="text" name="tbxLengthName"/></p>
+            <p>Size (bytes): <input type="text" name="tbxSizeName"/></p>
+            <p>Price (GBP): <input type="text" name="tbxPriceName"/></p>
+            <input type="hidden" name="hdnAlbumID" value="@Model._Album[0].AlbumId"/>
+            <input type="submit" value="Insert"/>
+        </form>
     </body>
 </html>

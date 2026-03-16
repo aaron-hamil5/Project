@@ -30,7 +30,7 @@
 
                     <p>Artist: 
                         <select name="ddmArtist">
-                            @foreach (ArtistAlbum artist in @Model.ArtistAlbums){
+                            @foreach (Artist artist in @Model.Artists){
                                 <option value="@artist.ArtistId">@artist.Name</option>
                             }
                         </select>
