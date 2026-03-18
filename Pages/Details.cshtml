@@ -22,32 +22,105 @@
             }
         </ol>
 
-        <!-- Section to add tracks -->
-        <h3>Add Artist</h3>
-        <form action="~/InsertTrack" method="post">
-            @Html.AntiForgeryToken()
-            <p>Track Name: <input type="text" name="tbxTrackName" required/></p>
-            <p>Media Type:
-                <select name="ddmMedia" required>
-                    @foreach (MediaType media in @Model.MediaTypes){
-                        <option value="@media.MediaTypeId">@media.Name</option>
-                    }
-                </select>
-            </p>
-            <p>Genre Type:
-                <select name="ddmGenre" required>
+        <div style="display:flex; ">
+            <!-- Section to add tracks -->
+            <section>
+                <h3>Add Track</h3>
+                <form action="~/InsertTrack" method="post">
+                    @Html.AntiForgeryToken()
+                    <p>Track Name: <input type="text" name="tbxTrackName" required/></p>
+                    <p>Media Type:
+                        <select name="ddmMedia" required>
+                            @foreach (MediaType media in @Model.MediaTypes){
+                                <option value="@media.MediaTypeId">@media.Name</option>
+                            }
+                        </select>
+                    </p>
+                    <p>Genre Type:
+                        <select name="ddmGenre" required>
 
-                    @foreach (Genre genres in @Model.Genres){
-                        <option value="@genres.GenreId">@genres.Name</option>
-                    }
-                </select>
-            </p>
-            <p>Composer: <input type="text" name="tbxComposerName"/></p>
-            <p>Length (ms): <input type="number" name="tbxLengthName" required/></p>
-            <p>Size (bytes): <input type="number" name="tbxSizeName" required/></p>
-            <p>Price (GBP): <input type="number" step="0.01" min="0.49" name="tbxPriceName" required/></p>
-            <input type="hidden" name="hdnAlbumID" value="@Model._Album[0].AlbumId"/>
-            <input type="submit" value="Insert"/>
-        </form>
+                            @foreach (Genre genres in @Model.Genres){
+                                <option value="@genres.GenreId">@genres.Name</option>
+                            }
+                        </select>
+                    </p>
+                    <p>Composer: <input type="text" name="tbxComposerName"/></p>
+                    <p>Length (ms): <input type="number" name="tbxLengthName" required/></p>
+                    <p>Size (bytes): <input type="number" name="tbxSizeName" required/></p>
+                    <p>Price (GBP): <input type="number" step="0.01" min="0.49" name="tbxPriceName" required/></p>
+                    <input type="hidden" name="hdnAlbumID" value="@Model._Album[0].AlbumId"/>
+                    <input type="submit" value="Insert"/>
+                </form>
+            </section>
+
+            <!-- Section to Update tracks -->
+            <section>
+                <h3>Update Track</h3>
+                <p>Select Track:
+                        <select name="ddmSelTrack" required>
+                            @foreach (AlbumTrack track in @Model.AlbumTrack){
+                                <option value="@track.TrackId">@track.Name</option>
+                            }
+                        </select>
+                    </p>
+                <form action="~/InsertTrack" method="post">
+                    @Html.AntiForgeryToken()
+                    <p>Track Name: <input type="text" name="tbxTrackName" required/></p>
+                    <p>Media Type:
+                        <select name="ddmMedia" required>
+                            @foreach (MediaType media in @Model.MediaTypes){
+                                <option value="@media.MediaTypeId">@media.Name</option>
+                            }
+                        </select>
+                    </p>
+                    <p>Genre Type:
+                        <select name="ddmGenre" required>
+
+                            @foreach (Genre genres in @Model.Genres){
+                                <option value="@genres.GenreId">@genres.Name</option>
+                            }
+                        </select>
+                    </p>
+                    <p>Composer: <input type="text" name="tbxComposerName"/></p>
+                    <p>Length (ms): <input type="number" name="tbxLengthName" required/></p>
+                    <p>Size (bytes): <input type="number" name="tbxSizeName" required/></p>
+                    <p>Price (GBP): <input type="number" step="0.01" min="0.49" name="tbxPriceName" required/></p>
+                    <input type="hidden" name="hdnAlbumID" value="@Model._Album[0].AlbumId"/>
+                    <input type="submit" value="Insert"/>
+                </form>
+            </section>
+
+            <!-- Section to add Artist -->
+            <section>
+                <h3>Add Artist</h3>
+                <form action="~/InsertArtist" method="post">
+                @Html.AntiForgeryToken()
+                    <p>Artist Name: <input type="text" name="tbxArtistName" required/></p>
+                    <input type="submit" value="Insert"/>
+                </form>
+            </section>
+
+            <!-- Section to Update Album -->
+            <section>
+                <h3>Update Album</h3>
+                <form action="~/UpdateAlbum" method="post">
+                    @Html.AntiForgeryToken()
+                    <p>Update Album Name: <input type="text" name="tbxNewAlbumName" value="@Model._Album[0].Title" required/></p>
+                    <p>Artist: 
+                        <select name="ddmNewArtist">
+                            @foreach (Artist artist in @Model.Artists){
+                                if (artist.ArtistId == Model._Album[0].ArtistId){
+                                    <option value="@artist.ArtistId" selected>@artist.Name</option>
+                                } else {
+                                    <option value="@artist.ArtistId">@artist.Name</option>
+                                }
+                            }
+                        </select>
+                    </p>
+                    <input type="hidden" name="hdnAlbumID" value="@Model._Album[0].AlbumId"/>
+                    <input type="submit" value="Update Album Data"/>
+                </form>
+            </section>
+        </div>
     </body>
 </html>

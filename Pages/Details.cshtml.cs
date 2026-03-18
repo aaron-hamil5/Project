@@ -13,6 +13,7 @@ namespace Project.Pages{
 
         public List<Genre> Genres {get; set;}
         public List<MediaType> MediaTypes {get; set;}
+        public List<Artist> Artists {get; set;}
         
 
         public void OnPost(){
@@ -21,6 +22,7 @@ namespace Project.Pages{
             ChinookDatabase db = new ChinookDatabase();
             Genres = db.Genres.ToList();
             MediaTypes = db.Media_Types.ToList();
+            Artists = db.Artists.ToList();
 
             _Album = db.Albums.Where(a => a.AlbumId == Int32.Parse(Request.Form["hdnAlbumID"])).ToList();
 

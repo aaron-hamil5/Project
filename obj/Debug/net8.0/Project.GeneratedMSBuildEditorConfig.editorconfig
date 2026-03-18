@@ -37,3 +37,7 @@ build_metadata.AdditionalFiles.CssScope =
 [/Users/aaronhamilton/IS/Project/Pages/InsertTrack.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5zZXJ0VHJhY2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/aaronhamilton/IS/Project/Pages/UpdateAlbum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBkYXRlQWxidW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
