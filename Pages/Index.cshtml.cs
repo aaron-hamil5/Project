@@ -7,10 +7,8 @@ namespace Project.Pages{
         //Creating a variable to hold what section of the page the user is in
         public required String Heading {get; set;}
 
-        public Boolean AccendingFilter {get; set;} = true;
-
+        //Creating variable to hold data from their corisponding table
         public List<ArtistAlbum>ArtistAlbums{get; set;}
-
         public List<Artist> Artists {get; set;}
 
         //OnGet gets called when the page loads.
@@ -19,7 +17,7 @@ namespace Project.Pages{
             Heading = "Albums";
 
             ChinookDatabase db = new ChinookDatabase();
-            //Linking Artist and Album togeter
+            //Linking Artist and Album togeter and adding it to the list
             ArtistAlbums = db.Artists.Join(
                 db.Albums, art => art.ArtistId, alb => alb.ArtistId,
                 (art,alb) => new ArtistAlbum()
@@ -33,7 +31,7 @@ namespace Project.Pages{
             .OrderBy(a => a.Name)
             .ToList();
 
-            //Getting the list of Artist
+            //Getting the list of Artist for Add Album, Artist Drop Down List
             Artists = db.Artists.OrderBy(a => a.Name).ToList();
         }
     }

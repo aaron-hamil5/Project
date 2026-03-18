@@ -6,8 +6,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Tab name Updates to Updated Album -->
-        <title>Updated Album - Chinook Console</title>
+        <!-- Tab name Updates to Updated Track -->
+        <title>Updated Track - Chinook Console</title>
     </head>
     <body>
         <h1>Chinook Console</h1>
@@ -16,11 +16,12 @@
         <p>You had sucessfully updated @Model.TrackName.<br/>What would you like to do?</p>
 
         <!-- Return To The Album -->
-        @* <form action="~/Details" method="post">
+        <form action="~/Details" method="post">
             @Html.AntiForgeryToken()
             <input type="hidden" name="hdnAlbumID" value="@Model.AlbumID"/>
             <input type="submit" value="Return to Album"/>
-        </form> *@
+        </form>
+
         <!-- Return To The Dashboard (Index) -->
         <form action="~/Index" method="get">
             @Html.AntiForgeryToken()

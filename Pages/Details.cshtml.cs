@@ -9,7 +9,8 @@ namespace Project.Pages{
         public required String ArtistName{get;set;}
 
         public List<AlbumTrack>AlbumTrack{get; set;}
-        public List<Album> _Album{get; set;}
+        public List<Album> Albums{get; set;}
+        public Album _Album{get; set;}
 
         public List<Genre> Genres {get; set;}
         public List<MediaType> MediaTypes {get; set;}
@@ -23,8 +24,10 @@ namespace Project.Pages{
             Genres = db.Genres.ToList();
             MediaTypes = db.Media_Types.ToList();
             Artists = db.Artists.ToList();
+            Albums = db.Albums.ToList();
 
-            _Album = db.Albums.Where(a => a.AlbumId == Int32.Parse(Request.Form["hdnAlbumID"])).ToList();
+
+            _Album = db.Albums.Single(f => f.AlbumId == Int32.Parse(Request.Form["hdnAlbumID"]));
 
             //Linking the Album and Tracks Table together
             AlbumTrack = db.Albums
@@ -49,10 +52,10 @@ namespace Project.Pages{
             .ToList();
 
             //Searching the Artist Table for the name by the Artist ID
-            ArtistName = db.Artists.Find(_Album[0].ArtistId).Name;
+            ArtistName = db.Artists.Find(_Album.ArtistId).Name;
 
             //Displaying the Album name with the Artist name
-            AlbumName = $"{_Album[0].Title} By {ArtistName}";
+            AlbumName = $"{_Album.Title} By {ArtistName}";
         }
         
     }

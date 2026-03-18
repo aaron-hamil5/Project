@@ -12,10 +12,11 @@
         <h1>Chinook Console</h1>
         <h2>@Model.Heading</h2> <!-- Displays the page the user is on -->
 
+        <!-- Add Artist and Album Section -->
         <div style="display:flex; ">
             <section>
                 <h3>Add Artist</h3>
-                <form action="~/InsertArtist" method="post">
+                <form action="~/Insert/InsertArtist" method="post">
                 @Html.AntiForgeryToken()
                     <p>Artist Name: <input type="text" name="tbxArtistName" required/></p>
                     <input type="submit" value="Insert"/>
@@ -24,10 +25,10 @@
 
             <section>
                 <h3>Add Album</h3>
-                <form action="~/InsertAlbum" method="post">
+                <form action="~/Insert/InsertAlbum" method="post">
                 @Html.AntiForgeryToken()
                     <p>Album Name: <input type="text" name="tbxAlbumName"/></p>
-
+                    <!-- Displays all artist in artist table, to prevent invalid data -->
                     <p>Artist: 
                         <select name="ddmArtist">
                             @foreach (Artist artist in @Model.Artists){
@@ -41,6 +42,7 @@
             </section>
         </div>
 
+        <!-- Creates a table and populates the data with albums -->
         <table border="1">
             <th>Album</th> <th>Artist</th> <th>&nbsp;</th> <th>&nbsp;</th>
             @foreach (ArtistAlbum album in @Model.ArtistAlbums){
@@ -48,6 +50,7 @@
                     <td>@album.Title</td>
                     <td>@album.Name</td>
                     <td>
+                        <!-- Button to view more details about selected Album -->
                         <form action="~/Details" method="post">
                             @Html.AntiForgeryToken()
                             <input type="hidden" name="hdnAlbumID" value="@album.AlbumId"/>

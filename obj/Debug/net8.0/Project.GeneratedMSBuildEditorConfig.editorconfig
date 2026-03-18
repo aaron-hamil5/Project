@@ -26,22 +26,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aaronhamilton/IS/Project/Pages/InsertAlbum.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5zZXJ0QWxidW0uY3NodG1s
+[/Users/aaronhamilton/IS/Project/Pages/Insert/InsertAlbum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5zZXJ0L0luc2VydEFsYnVtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aaronhamilton/IS/Project/Pages/InsertArtist.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5zZXJ0QXJ0aXN0LmNzaHRtbA==
+[/Users/aaronhamilton/IS/Project/Pages/Insert/InsertArtist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5zZXJ0L0luc2VydEFydGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aaronhamilton/IS/Project/Pages/InsertTrack.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5zZXJ0VHJhY2suY3NodG1s
+[/Users/aaronhamilton/IS/Project/Pages/Insert/InsertTrack.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5zZXJ0L0luc2VydFRyYWNrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aaronhamilton/IS/Project/Pages/UpdateAlbum.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBkYXRlQWxidW0uY3NodG1s
+[/Users/aaronhamilton/IS/Project/Pages/Update/UpdateAlbum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBkYXRlL1VwZGF0ZUFsYnVtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/aaronhamilton/IS/Project/Pages/UpdateTrack.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBkYXRlVHJhY2suY3NodG1s
+[/Users/aaronhamilton/IS/Project/Pages/Update/UpdateTrack.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBkYXRlL1VwZGF0ZVRyYWNrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

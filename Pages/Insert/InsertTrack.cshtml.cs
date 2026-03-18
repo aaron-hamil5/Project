@@ -13,6 +13,7 @@ namespace Project.Pages{
         {
             AlbumID = Int32.Parse(Request.Form["hdnAlbumID"]);
             TrackName = Request.Form["tbxTrackName"];
+            
             Track insTrack = new Track() { 
                 Name = Request.Form["tbxTrackName"],
                 AlbumId = Int32.Parse(Request.Form["hdnAlbumID"]),
