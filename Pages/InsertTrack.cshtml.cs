@@ -16,8 +16,8 @@ namespace Project.Pages{
             Track insTrack = new Track() { 
                 Name = Request.Form["tbxTrackName"],
                 AlbumId = Int32.Parse(Request.Form["hdnAlbumID"]),
-                MediaTypeId = 1,
-                GenreId = 1,
+                MediaTypeId = Int32.Parse(Request.Form["ddmMedia"]),
+                GenreId = Int32.Parse(Request.Form["ddmGenre"]),
                 Composer = Request.Form["tbxComposerName"],
                 Milliseconds = Int32.Parse(Request.Form["tbxLengthName"]),
                 Bytes = Int32.Parse(Request.Form["tbxSizeName"]),

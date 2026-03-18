@@ -56,36 +56,46 @@
             <!-- Section to Update tracks -->
             <section>
                 <h3>Update Track</h3>
-                <p>Select Track:
+                <form action="~/UpdateTrack" method="post">
+                    @Html.AntiForgeryToken()
+                    <p>Select Track:
                         <select name="ddmSelTrack" required>
                             @foreach (AlbumTrack track in @Model.AlbumTrack){
                                 <option value="@track.TrackId">@track.Name</option>
                             }
                         </select>
                     </p>
-                <form action="~/InsertTrack" method="post">
-                    @Html.AntiForgeryToken()
-                    <p>Track Name: <input type="text" name="tbxTrackName" required/></p>
+                    <p>Track Name: <input type="text" name="tbxUpdateTrackName" required/></p>
+                    <p>Album:
+                        <select name="ddmUpdateAlbum" required>
+                            @foreach (Album album in @Model._Album){
+                                if (album.AlbumId == Model._Album[0].AlbumId){
+                                    <option value="@album.AlbumId" selected>@album.Title</option>
+                                } else {
+                                    <option value="@album.AlbumId">@album.Title</option>
+                                }
+                            }
+                        </select>
+                    </p>
                     <p>Media Type:
-                        <select name="ddmMedia" required>
+                        <select name="ddmUpdateMedia" required>
                             @foreach (MediaType media in @Model.MediaTypes){
                                 <option value="@media.MediaTypeId">@media.Name</option>
                             }
                         </select>
                     </p>
                     <p>Genre Type:
-                        <select name="ddmGenre" required>
+                        <select name="ddmUpdateGenre" required>
 
                             @foreach (Genre genres in @Model.Genres){
                                 <option value="@genres.GenreId">@genres.Name</option>
                             }
                         </select>
                     </p>
-                    <p>Composer: <input type="text" name="tbxComposerName"/></p>
-                    <p>Length (ms): <input type="number" name="tbxLengthName" required/></p>
-                    <p>Size (bytes): <input type="number" name="tbxSizeName" required/></p>
-                    <p>Price (GBP): <input type="number" step="0.01" min="0.49" name="tbxPriceName" required/></p>
-                    <input type="hidden" name="hdnAlbumID" value="@Model._Album[0].AlbumId"/>
+                    <p>Composer: <input type="text" name="tbxUpdateComposerName"/></p>
+                    <p>Length (ms): <input type="number" name="tbxUpdateLengthName" required/></p>
+                    <p>Size (bytes): <input type="number" name="tbxUpdateSizeName" required/></p>
+                    <p>Price (GBP): <input type="number" step="0.01" min="0.49" name="tbxUpdatePriceName" required/></p>
                     <input type="submit" value="Insert"/>
                 </form>
             </section>
