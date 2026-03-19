@@ -1,0 +1,27 @@
+@page
+<!-- Linking the DeleteTrack class to the HTML File -->
+@model Project.Pages.DeleteTrack
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Deleting...</title>
+    </head>
+    <body>
+        <h1>Chinook Console</h1>
+        <h2>Deleted Track!</h2>
+
+        <p>You had sucessfully deleted @Model.TrackName.<br/>What would you like to do?</p>
+
+        <form action="~/Details" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="hdnAlbumID" value="@Model.AlbumID"/>
+            <input type="submit" value="Return to Album"/>
+        </form>
+        <form action="~/Index" method="get">
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Dashboard"/>
+        </form>
+    </body>
+</html>

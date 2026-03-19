@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/aaronhamilton/IS/Project
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/aaronhamilton/IS/Project/Pages/Delete/DeleteAlbum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGVsZXRlL0RlbGV0ZUFsYnVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/aaronhamilton/IS/Project/Pages/Delete/DeleteTrack.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGVsZXRlL0RlbGV0ZVRyYWNrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/aaronhamilton/IS/Project/Pages/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

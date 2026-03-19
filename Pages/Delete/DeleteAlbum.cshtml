@@ -1,0 +1,21 @@
+@page
+<!-- Linking the DeleteAlbum class to the HTML File -->
+@model Project.Pages.DeleteAlbum
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Deleting...</title>
+    </head>
+    <body>
+        <h1>Chinook Console</h1>
+        <h2>Deleted Album!</h2>
+
+        <p>You had sucessfully deleted @Model.AlbumName.</p>
+        <form action="~/Index" method="get">
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Dashboard"/>
+        </form>
+    </body>
+</html>

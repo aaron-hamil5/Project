@@ -22,6 +22,7 @@
             }
         </ol>
 
+        <!-- Modification Section -->
         <div style="display:flex; ">
             <!-- Section to add tracks -->
             <section>
@@ -134,6 +135,33 @@
                     </p>
                     <input type="hidden" name="hdnAlbumID" value="@Model._Album.AlbumId"/>
                     <input type="submit" value="Update Album Data"/>
+                </form>
+            </section>
+        </div>
+
+        <!-- Deletion Section -->
+        <div style="display:flex;">
+            <section>
+                <h3>Delete Track</h3>
+                <form action="~/Delete/DeleteTrack" method="post">
+                    @Html.AntiForgeryToken()
+                    <p>Select Track:
+                        <select name="ddmSelTrack" required>
+                            @foreach (AlbumTrack track in @Model.AlbumTrack){
+                                <option value="@track.TrackId">@track.Name</option>
+                            }
+                        </select>
+                    </p>
+                    <input type="submit" value="Delete Track Data"/>
+                </form>
+            </section>
+            <section>
+                <h3>Delete Album</h3>
+                <p>Watch out! Deleting an Album will remove all the songs within the album as well.</p>
+                <form action="~/Delete/DeleteAlbum" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="hdnAlbumID" value="@Model._Album.AlbumId"/>
+                    <input type="submit" value="Delete Album"/>
                 </form>
             </section>
         </div>
