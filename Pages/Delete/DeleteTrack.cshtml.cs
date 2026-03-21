@@ -17,8 +17,12 @@ namespace Project.Pages{
 
             ChinookDatabase db = new ChinookDatabase();
             Track remTrack = db.Tracks.Single(f => f.TrackId == TrackID); //Find track from its TrackId
+            List<InvoiceItem> remInvoiceItems = db.Invoice_Items.Where(f => f.TrackId == TrackID).ToList();
+            List<PlaylistTrack> remPlaylistTrack = db.Playlist_Track.Where(f => f.TrackId == TrackID).ToList();
 
             //Updating the table then saving the Database
+            db.Invoice_Items.RemoveRange(remInvoiceItems);
+            db.Playlist_Track.RemoveRange(remPlaylistTrack);
             db.Tracks.Remove(remTrack);
             db.SaveChanges();
 

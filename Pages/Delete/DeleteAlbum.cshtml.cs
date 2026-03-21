@@ -18,6 +18,14 @@ namespace Project.Pages{
             //Updating Strings for the HTML page.
             AlbumName = db.Albums.Single(f => f.AlbumId == AlbumID).Title;
             List<Track> remTracks = db.Tracks.Where(f => f.AlbumId == AlbumID).ToList(); //Find all tracks from its AlbumID
+
+            foreach (Track track in remTracks){
+                List<InvoiceItem> remInvoiceItems = db.Invoice_Items.Where(f => f.TrackId == track.TrackId).ToList();
+                List<PlaylistTrack> remPlaylistTrack = db.Playlist_Track.Where(f => f.TrackId == track.TrackId).ToList();
+
+                db.Invoice_Items.RemoveRange(remInvoiceItems);
+                db.Playlist_Track.RemoveRange(remPlaylistTrack);
+            }
             Album remAlbum = db.Albums.Single(f => f.AlbumId == AlbumID);
 
             //Bulk deleting Tracks first
