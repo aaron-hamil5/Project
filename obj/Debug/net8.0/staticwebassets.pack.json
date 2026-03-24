@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/css/index.css",
+      "PackagePath": "staticwebassets/css/index.css"
+    },
+    {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/css/material_design.css",
+      "PackagePath": "staticwebassets/css/material_design.css"
+    },
+    {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/css/styles.css",
+      "PackagePath": "staticwebassets/css/styles.css"
+    },
+    {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/images/album_cover_array.jpg",
+      "PackagePath": "staticwebassets/images/album_cover_array.jpg"
+    },
+    {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/images/cd_box.jpg",
+      "PackagePath": "staticwebassets/images/cd_box.jpg"
+    },
+    {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/images/ui/auto_mode.webp",
+      "PackagePath": "staticwebassets/images/ui/auto_mode.webp"
+    },
+    {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/images/ui/dark_mode.webp",
+      "PackagePath": "staticwebassets/images/ui/dark_mode.webp"
+    },
+    {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/images/ui/light_mode.webp",
+      "PackagePath": "staticwebassets/images/ui/light_mode.webp"
+    },
+    {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/images/website_icon.webp",
+      "PackagePath": "staticwebassets/images/website_icon.webp"
+    },
+    {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/javascript/toggle_theme.js",
+      "PackagePath": "staticwebassets/javascript/toggle_theme.js"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Project.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.Project.props",
+      "PackagePath": "build\\Project.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Project.props",
+      "PackagePath": "buildMultiTargeting\\Project.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Project.props",
+      "PackagePath": "buildTransitive\\Project.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

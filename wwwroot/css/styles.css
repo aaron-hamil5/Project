@@ -1,0 +1,194 @@
+/* Add this CSS file to each page for a consistent look*/
+/* Add @Import for personal font */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+body{
+    font-family: 'Figtree', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: var(--md-sys-color-background);
+    transition: background-color 0.3s;
+}
+
+body p{
+    color: var(--md-sys-color-on-background);
+    transition: color 0.3s;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+    color: var(--md-sys-color-on-background);
+    transition: color 0.3s;
+}
+
+a{
+    text-decoration: none;
+    color: var(--md-sys-color-on-background);
+    transition: color 0.3s;
+}
+
+#header{
+    display: flex;
+    justify-content:space-between;
+    background-color: var(--md-sys-color-secondary-container);
+    padding: 5px 25px 5px 25px;
+    height: 50px;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 3;
+    box-shadow: 0 0 10px rgba(100, 100, 100, 0.5);
+    transition: background-color 0.3s;
+}
+
+#logo{
+    display: flex;
+}
+
+#logo_image{
+    width: 45px;
+    height: 45px;
+    margin: auto;
+    padding-top: 4px;
+}
+
+#logo h1{
+    margin: auto;
+    color: var(--md-sys-color-on-secondary-container);
+    padding-left: 10px;
+    padding-top: 5px;
+    transition: color 0.3s;
+}
+
+/* Navigation bar in Header */
+nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+nav ul li{
+    float: left;
+    padding: 0 2px 0 2px;
+}
+
+.button {
+  color: var(--md-sys-color-on-secondary-container);
+  padding: 14px 16px;
+  text-decoration: none;
+  margin: auto;
+  border-radius: 50px;
+  border: 1px solid gray;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button_header{
+    display:block;
+}
+
+.selected{
+  background-color: var(--md-sys-color-primary);
+  opacity: 0.75;
+  color: var(--md-sys-color-on-primary);
+  transition: opacity 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background-color: var(--md-sys-color-primary);
+  opacity: 1;
+  color: var(--md-sys-color-on-primary);
+  text-decoration: none;
+  margin: auto;
+  transition: background-color 0.3s, color 0.3s;
+
+}
+
+#theme_toggle{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    padding-top: 15px;
+    margin-left: 5px;
+}
+
+/* Main content on the page */
+
+main{
+    padding-top: 75px;
+    padding-bottom: 15px;
+    margin: 0 15% 5px 15%;
+    min-height: calc(100vh - 137px);
+}
+
+.input {
+    margin-top: 5px;
+    position: relative;
+}
+
+.text_box {
+    border: solid 2px var(--md-sys-color-primary);
+    border-radius: 3px;
+    background: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    font-size: 15px;
+    font-weight: 100;
+    height: 40px;
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    margin: 5px 10px 10px 0;
+}
+
+label {
+    margin-left: 8px;
+    font-weight: lighter;
+    position: absolute;
+    background: var(--md-sys-color-surface);
+    padding: 0 5px;
+    color: var(--md-sys-color-on-surface);
+    top: 20px;
+    font-size: 14px;
+    transition: 0.3s top, 0.3s font-size;
+
+}
+
+.text_box:focus + label,
+.text_box:not(:placeholder-shown) + label{
+    top: 0;
+    font-size: 12px;
+}
+
+.left_side{
+    width: 100%;
+    height:fit-content;
+    background-color: var(--md-sys-color-primary-container);
+    border-radius: 20px ;
+    padding: 15px 15px 25px 15px;
+    margin-right: 5px;
+}
+
+.right_side{
+    width: 100%;
+    height:fit-content;
+    border-radius: 20px ;
+    background-color: var(--md-sys-color-tertiary-container);
+    padding: 15px;
+    margin-left: 5px;
+}
+
+/* This is a pre-made footer, it is a landscape format*/
+footer{
+    font-size: 10px;
+    font-weight:lighter;
+    display: flex;
+    margin: auto;
+    padding: 5px 15px;
+    justify-content:space-between;
+    background-color: var(--md-sys-color-inverse-surface);
+    transition: background-color 0.3s;
+}
+
+footer p{
+    color: var(--md-sys-color-inverse-on-surface);
+    transition: color 0.3s;
+}

@@ -4,61 +4,137 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script src="/javascript/toggle_theme.js"></script>
+        <link rel="stylesheet" href="css/material_design.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/index.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="View all albums currently within the Chinook Database">
         <title>Chinook Console</title>
     </head>
+
     <body>
-        <h1>Chinook Console</h1>
-        <h2>@Model.Heading</h2> <!-- Displays the page the user is on -->
 
-        <!-- Add Artist and Album Section -->
-        <div style="display:flex; ">
-            <section>
-                <h3>Add Artist</h3>
-                <form action="~/Insert/InsertArtist" method="post">
-                @Html.AntiForgeryToken()
-                    <p>Artist Name: <input type="text" name="tbxArtistName" required/></p>
-                    <input type="submit" value="Insert"/>
+        <header id="header">
+            <a href="/Index">
+                <div id="logo">
+                    <img id="logo_image" src="/images/website_icon.webp" alt="Web Logo">
+                    <h1 class="not_important">Chinook Console</h1>
+                </div>
+            </a>
+
+            <nav>
+                <ul>
+                    <li class="not_important"><a class="button button_header selected" href="/Index">Home</a></li>
+                    <li><img id="theme_toggle" src="/images/ui/dark_mode.webp" alt="Theme Toggle" onclick="toggleTheme()"></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h2>@Model.Heading</h2> <!-- Displays the page the user is on -->
+
+            <!-- This section is to add artist and albums to the database -->
+            <div style="display:flex; margin-bottom:15px; ">
+                <article class="left_side">
+
+                    <h3>Add Artist</h3>
+
+                    <form action="~/Insert/InsertArtist" method="post">
+                    @Html.AntiForgeryToken()
+
+                        <!-- Outline Text Box to input Artist Name -->
+                        <div class="input">
+                            <input class="text_box" type="text" id="tbxArtistName" name="tbxArtistName" placeholder=" " required>
+                            <label for="tbxArtistName">Artist Name:</label>
+                        </div>
+
+                        <!-- Button to add the Artist -->
+                        <input class="button" type="submit" value="Insert"/>
+                    </form>
+
+                </article>
+
+                <article class="right_side">
+
+                    <h3>Add Album</h3>
+
+                    <form action="~/Insert/InsertAlbum" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <!-- Outline Text Box to input Album Name -->
+                        <div class="input">
+                            <input class="text_box" type="text" id="tbxAlbumName" name="tbxAlbumName" placeholder=" " required>
+                            <label for="tbxAlbumName">Album Name:</label>
+                        </div>
+
+                        <!-- Displays all artist in artist table, to prevent invalid data -->
+                        <p>Artist: 
+                            <select name="ddmArtist">
+                                @foreach (Artist artist in @Model.Artists){
+                                    <option value="@artist.ArtistId">@artist.Name</option>
+                                }
+                            </select>
+                        </p>
+
+                        <!-- Button to add the Album -->
+                        <input class="button" type="submit" value="Insert"/>
+                    </form>
+                </article>
+            </div>
+
+            @* <!-- Creates a table and populates the data with albums -->
+            <table border="1">
+                <th>Album</th> <th>Artist</th> <th>&nbsp;</th>
+                @foreach (ArtistAlbum album in @Model.ArtistAlbums){
+                    <tr>
+                        <td>@album.Title</td>
+                        <td>@album.Name</td>
+                        <td>
+                            <!-- Button to view more details about selected Album -->
+                            <form action="~/Details" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="hdnAlbumID" value="@album.AlbumId"/>
+                                <button type="submit" value="Details"/>
+                            </form>
+                        </td>
+                    </tr> 
+                }
+            </table> *@
+
+            <article class="card">
+                <div class="card_header">
+                    <img id="question_img" src="/images/album_cover_array.jpg">
+                    <h3 id="sub_heading">Chinook Console</h3>
+                    <h2 id="Title">Viewing All Albums</h2>
+                </div>
+                    <ul>
+                        @foreach (ArtistAlbum album in @Model.ArtistAlbums){
+                            <li class="answer_bar">
+                                <form action="~/Details" method="post">
+                                @Html.AntiForgeryToken()
+                                    <input type="hidden" name="hdnAlbumID" value="@album.AlbumId"/>
+                                    <button class="form_button" type="submit">
+                                        <img id="btn_img_one" src="/images/cd_box.jpg">
+                                        <h3>@album.Title</h3>
+                                        <p>@album.Name</p>
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                    </ul>
                 </form>
-            </section>
 
-            <section>
-                <h3>Add Album</h3>
-                <form action="~/Insert/InsertAlbum" method="post">
-                @Html.AntiForgeryToken()
-                    <p>Album Name: <input type="text" name="tbxAlbumName"/></p>
-                    <!-- Displays all artist in artist table, to prevent invalid data -->
-                    <p>Artist: 
-                        <select name="ddmArtist">
-                            @foreach (Artist artist in @Model.Artists){
-                                <option value="@artist.ArtistId">@artist.Name</option>
-                            }
-                        </select>
-                    </p>
+            </article>
 
-                    <input type="submit" value="Insert"/>
-                </form>
-            </section>
-        </div>
+        </main>
 
-        <!-- Creates a table and populates the data with albums -->
-        <table border="1">
-            <th>Album</th> <th>Artist</th> <th>&nbsp;</th>
-            @foreach (ArtistAlbum album in @Model.ArtistAlbums){
-                <tr>
-                    <td>@album.Title</td>
-                    <td>@album.Name</td>
-                    <td>
-                        <!-- Button to view more details about selected Album -->
-                        <form action="~/Details" method="post">
-                            @Html.AntiForgeryToken()
-                            <input type="hidden" name="hdnAlbumID" value="@album.AlbumId"/>
-                            <input type="submit" value="Details"/>
-                        </form>
-                    </td>
-                </tr> 
-            }
-        </table>
+        <footer>
+            <p>Copyright &copy; 2026 Uniq Studio.</p>
+            <p>B00869530</p>
+            <p>Developed By Aaron Hamilton</p>
+        </footer>
+
     </body>
 </html>
