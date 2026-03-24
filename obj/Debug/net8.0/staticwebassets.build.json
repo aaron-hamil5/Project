@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2nlk54J3lKR5H1fSGRVrnwCfXy33PNifUPvW5HV+2iw=",
+  "Hash": "stifV5pDZxDwSpK9mUf5sxHM2Py+UAGsqmMWIZPCSo4=",
   "Source": "Project",
   "BasePath": "_content/Project",
   "Mode": "Default",
@@ -186,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/website_icon.webp"
+    },
+    {
+      "Identity": "/Users/aaronhamilton/IS/Project/wwwroot/javascript/confirmation.js",
+      "SourceId": "Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/aaronhamilton/IS/Project/wwwroot/",
+      "BasePath": "_content/Project",
+      "RelativePath": "javascript/confirmation.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/javascript/confirmation.js"
     },
     {
       "Identity": "/Users/aaronhamilton/IS/Project/wwwroot/javascript/toggle_theme.js",

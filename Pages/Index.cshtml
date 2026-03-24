@@ -36,7 +36,7 @@
             <h2>@Model.Heading</h2> <!-- Displays the page the user is on -->
 
             <!-- This section is to add artist and albums to the database -->
-            <div style="display:flex; margin-bottom:15px; ">
+            <section style="display:flex; margin-bottom:15px; ">
                 <article class="left_side">
 
                     <h3>Add Artist</h3>
@@ -82,26 +82,23 @@
                         <input class="button" type="submit" value="Insert"/>
                     </form>
                 </article>
-            </div>
+            </section>
 
-            @* <!-- Creates a table and populates the data with albums -->
-            <table border="1">
-                <th>Album</th> <th>Artist</th> <th>&nbsp;</th>
-                @foreach (ArtistAlbum album in @Model.ArtistAlbums){
-                    <tr>
-                        <td>@album.Title</td>
-                        <td>@album.Name</td>
-                        <td>
-                            <!-- Button to view more details about selected Album -->
-                            <form action="~/Details" method="post">
-                                @Html.AntiForgeryToken()
-                                <input type="hidden" name="hdnAlbumID" value="@album.AlbumId"/>
-                                <button type="submit" value="Details"/>
-                            </form>
-                        </td>
-                    </tr> 
-                }
-            </table> *@
+            <search>
+                <form action="~/Insert/InsertArtist" method="post" style="display: flex;">
+                    @Html.AntiForgeryToken()
+
+                        <!-- Outline Text Box to input Artist Name -->
+                        <div style="width: 100%;" class="input">
+                            <input class="text_box" type="text" id="tbxSearch" name="tbxSearch" placeholder=" " required>
+                            <label for="tbxSearch">Search</label>
+                        </div>
+
+                        <!-- Button to add the Artist -->
+                        <input class="search_button" type="submit" value="Go"/>
+                    </form>
+            </search>
+        
 
             <article class="card">
                 <div class="card_header">

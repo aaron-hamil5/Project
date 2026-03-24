@@ -19,7 +19,7 @@
 #Title{
     color: var(--md-sys-color-on-primary-container);
     transition: color 0.3s;
-    margin-top: 75px;
+    margin-top: 50px;
     margin-left: 25px;
     font-size: 25px;
     z-index: 4;
@@ -79,7 +79,6 @@ article ul li img{
 }
 article ul li img:hover{
     opacity: 65%;
-    z-index: -1;
 }
 
 .answer_bar{
@@ -88,4 +87,23 @@ article ul li img:hover{
     box-shadow: 0 10px 8px 0 hsl(0deg 0% 0% / 0.3);
     overflow: hidden;
     position: relative;
+}
+
+.search_button{
+    color: var(--md-sys-color-on-secondary-container);
+    text-decoration: none;
+    border-radius: 50px;
+    border: 1px solid gray;
+    transition: background-color 0.3s, color 0.3s;
+    width: 25px; 
+    margin:10px; 
+    padding:0;
+}
+.search_button:hover{
+    background-color: var(--md-sys-color-primary);
+    opacity: 1;
+    color: var(--md-sys-color-on-primary);
+    width: 25px; 
+    margin:10px; 
+    padding:0;
 }

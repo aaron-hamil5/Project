@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets/images/website_icon.webp"
     },
     {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/javascript/confirmation.js",
+      "PackagePath": "staticwebassets/javascript/confirmation.js"
+    },
+    {
       "Id": "/Users/aaronhamilton/IS/Project/wwwroot/javascript/toggle_theme.js",
       "PackagePath": "staticwebassets/javascript/toggle_theme.js"
     },

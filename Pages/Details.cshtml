@@ -172,6 +172,7 @@
 <html lang="en">
     <head>
         <script src="/javascript/toggle_theme.js"></script>
+        <script src="/javascript/confirmation.js"></script>
         <link rel="stylesheet" href="/css/material_design.css">
         <link rel="stylesheet" href="/css/styles.css">
         <link rel="stylesheet" href="/css/index.css">
@@ -343,18 +344,20 @@
                                 }
                             </select>
                         </p>
-                        <input type="submit" value="Delete Track Data"/>
+                        <p style="display: none;" id="delete_track_confirm">Are you sure?<br/>This cannot be undone!<input type="submit" value="Delete Track"/></p>
                     </form>
+                    <button id="delete_track" class="button" onclick="deleteTrackRequest()">Delete Track</button>
                 </article>
 
                 
                 <article class="right_side">
                     <h3>Delete Album</h3>
-                    <p>Watch out! Deleting an Album will remove all the songs within the album as well.</p>
-                    <form action="~/Delete/DeleteAlbum" method="post">
+                    <button id="delete_album" class="button" onclick="deleteAlbumRequest()">Delete Album</button>
+                    <form style="display: none;" id="delete_album_confirm" action="~/Delete/DeleteAlbum" method="post">
                         @Html.AntiForgeryToken()
+                        <p>Watch out! Deleting an album will remove all the songs within the album as well.<br/>This cannot be undone!</p>
                         <input type="hidden" name="hdnAlbumID" value="@Model._Album.AlbumId"/>
-                        <input type="submit" value="Delete Album"/>
+                        <p>Are you sure you want to delete the Album? <input type="submit" value="Yes"/></p>
                     </form>
                 </article>
             </div>
