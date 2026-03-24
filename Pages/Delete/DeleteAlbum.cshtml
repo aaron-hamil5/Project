@@ -1,7 +1,7 @@
 @page
 <!-- Linking the DeleteAlbum class to the HTML File -->
 @model Project.Pages.DeleteAlbum
-<!DOCTYPE html>
+@* <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -17,5 +17,73 @@
             @Html.AntiForgeryToken()
             <input type="submit" value="Dashboard"/>
         </form>
+    </body>
+</html> *@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="/javascript/toggle_theme.js"></script>
+        <link rel="stylesheet" href="/css/material_design.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/index.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="View all albums currently within the Chinook Database">
+        <title>Chinook Console</title>
+    </head>
+
+    <body>
+
+        <header id="header">
+            <a href="/Index">
+                <div id="logo">
+                    <img id="logo_image" src="/images/website_icon.webp" alt="Web Logo">
+                    <h1 class="not_important">Chinook Console</h1>
+                </div>
+            </a>
+
+            <nav>
+                <ul>
+                    <li class="not_important"><a class="button button_header" href="/Index">Home</a></li>
+                    <li><img id="theme_toggle" src="/images/ui/dark_mode.webp" alt="Theme Toggle" onclick="toggleTheme()"></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h2>Deleted Album</h2> <!-- Displays the page the user is on -->
+
+            
+            <div style="display:flex; margin-bottom:15px; ">
+
+                <!-- This section display a message saying the data was updated -->
+                <article class="left_side">
+                    <p>You had sucessfully added: @Model.AlbumName.</p>
+                    <p>All changes have now been saved to the servers.</p>
+                </article>
+
+                <!-- This section is to allow the user to navigate back to home or album -->
+                <article class="right_side">
+
+                    <p>What would you like to do?</p>
+
+                    <!-- Return To The Dashboard (Index) -->
+                    <form action="~/Index" method="get">
+                    @Html.AntiForgeryToken()
+                        <button class="button" type="submit">Return to Dashboard</button>
+                    </form>
+                    
+                </article>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>Copyright &copy; 2026 Uniq Studio.</p>
+            <p>B00869530</p>
+            <p>Developed By Aaron Hamilton</p>
+        </footer>
+
     </body>
 </html>
