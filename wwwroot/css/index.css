@@ -79,6 +79,7 @@ article ul li img{
 }
 article ul li img:hover{
     opacity: 65%;
+    z-index: -1;
 }
 
 .answer_bar{
