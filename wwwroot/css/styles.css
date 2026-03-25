@@ -20,6 +20,11 @@ h1, h2, h3, h4, h5, h6, p{
     transition: color 0.3s;
 }
 
+ol::marker, li::marker{
+    color: var(--md-sys-color-on-background);
+    transition: color 0.3s;
+}
+
 a{
     text-decoration: none;
     color: var(--md-sys-color-on-background);

@@ -1,173 +1,6 @@
 @page
 <!-- Linking the ViewTracks class to the HTML File -->
 @model Project.Pages.ViewTracks
-@* <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Tab name Updates to Album Name -->
-        <title>@Model.AlbumName - Chinook</title>
-    </head>
-    <body>
-        <h1>Chinook Console</h1>
-        <h2>@Model.Heading</h2> <!-- Displays the page the user is on -->
-        <h3>@Model.AlbumName</h3>
-
-        <!-- Creating a Numbered (Orgenised) List -->
-        <ol>
-            @foreach (AlbumTrack track in @Model.AlbumTrack){
-                //Displays each Track name
-                <li>@track.Name</li>
-            }
-        </ol>
-
-        <!-- Modification Section -->
-        <div style="display:flex; ">
-            <!-- Section to add tracks -->
-            <section>
-                <h3>Add Track</h3>
-                <form action="~/Insert/InsertTrack" method="post">
-                    @Html.AntiForgeryToken()
-                    <p>Track Name: <input type="text" name="tbxTrackName" required/></p>                            <!-- Tracks Name, Requires input to prevent it being NULL -->
-                    <p>Media Type:
-                        <select name="ddmMedia" required>
-                            @foreach (MediaType media in @Model.MediaTypes){
-                                <option value="@media.MediaTypeId">@media.Name</option>
-                            }
-                        </select>
-                    </p>                                                                                            <!-- Media Type, Populated drop down menu to prevent it being NULL -->
-                    <p>Genre Type:
-                        <select name="ddmGenre" required>
-
-                            @foreach (Genre genres in @Model.Genres){
-                                <option value="@genres.GenreId">@genres.Name</option>
-                            }
-                        </select>
-                    </p>                                                                                            <!-- Genre Type, Populated drop down menu to prevent it being NULL -->
-                    <p>Composer: <input type="text" name="tbxComposerName"/></p>                                    <!-- Composer, Can be NULL -->
-                    <p>Length (ms): <input type="number" name="tbxLengthName" required/></p>                        <!-- Length in Milliseconds, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
-                    <p>Size (bytes): <input type="number" name="tbxSizeName" required/></p>                         <!-- File Size, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
-                    <p>Price (GBP): <input type="number" step="0.01" min="0.49" name="tbxPriceName" required/></p>  <!-- Price, Requires input and set to number to prevent incompatible types and prevent it being NULL and set to incriment by 1p (0.01) -->
-                    <input type="hidden" name="hdnAlbumID" value="@Model._Album.AlbumId"/>                          <!-- AlbumId, Hidden from user prevent it being NULL and adds data to the correct album -->
-                    <input type="submit" value="Insert"/>                                                           <!-- Submits the form to add to the Database -->
-                </form>
-            </section>
-
-
-            <!-- Section to Update tracks -->
-            <section>
-                <h3>Update Track</h3>
-                <form action="~/Update/UpdateTrack" method="post">
-                    @Html.AntiForgeryToken()
-                    <p>Select Track:
-                        <select name="ddmSelTrack" required>
-                            @foreach (AlbumTrack track in @Model.AlbumTrack){
-                                <option value="@track.TrackId">@track.Name</option>
-                            }
-                        </select>                          
-                    </p>                                                                                            <!-- Select Tracks, Set Range of Tracks in the album to help prevent it being NULL -->
-                    <p>Track Name: <input type="text" name="tbxUpdateTrackName" required/></p>                      <!-- Tracks Name, Requires input to prevent it being NULL -->
-                    <p>Album:
-                        <select name="ddmUpdateAlbum" required>
-                            @foreach (Album album in @Model.Albums){
-                                //For look looks for the Album and Selects it in the dropdown automatically
-                                if (album.AlbumId == Model._Album.AlbumId){
-                                    <option value="@album.AlbumId" selected>@album.Title</option>
-                                } else {
-                                    <option value="@album.AlbumId">@album.Title</option>
-                                }
-                            }
-                        </select>
-                    </p>                                                                                            <!-- Select Album, Set Range of Albums in the Database to help prevent it being NULL -->
-                    <p>Media Type:
-                        <select name="ddmUpdateMedia" required>
-                            @foreach (MediaType media in @Model.MediaTypes){
-                                <option value="@media.MediaTypeId">@media.Name</option>
-                            }
-                        </select>
-                    </p>                                                                                            <!-- Media Type, Populated drop down menu to prevent it being NULL -->
-                    <p>Genre Type:
-                        <select name="ddmUpdateGenre" required>
-
-                            @foreach (Genre genres in @Model.Genres){
-                                <option value="@genres.GenreId">@genres.Name</option>
-                            }
-                        </select>
-                    </p>                                                                                                    <!-- Genre Type, Populated drop down menu to prevent it being NULL -->
-                    <p>Composer: <input type="text" name="tbxUpdateComposerName"/></p>                                      <!-- Composer, Can be NULL -->
-                    <p>Length (ms): <input type="number" name="tbxUpdateLengthName" required/></p>                          <!-- Length in Milliseconds, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
-                    <p>Size (bytes): <input type="number" name="tbxUpdateSizeName" required/></p>                           <!-- File Size, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
-                    <p>Price (GBP): <input type="number" step="0.01" min="0.49" name="tbxUpdatePriceName" required/></p>    <!-- Price, Requires input and set to number to prevent incompatible types and prevent it being NULL and set to incriment by 1p (0.01) -->
-                    <input type="submit" value="Update Track"/>                                                             <!-- Submits the form to update the track to the Database -->
-                </form>
-            </section>
-
-
-            <!-- Section to add Artist -->
-            <section>
-                <h3>Add Artist</h3>
-                <form action="~/Insert/InsertArtist" method="post">
-                @Html.AntiForgeryToken()
-                    <p>Artist Name: <input type="text" name="tbxArtistName" required/></p>
-                    <input type="submit" value="Insert"/>
-                </form>
-            </section>
-
-
-            <!-- Section to Update Album -->
-            <section>
-                <h3>Update Album</h3>
-                <form action="~/Update/UpdateAlbum" method="post">
-                    @Html.AntiForgeryToken()
-                    <p>Update Album Name: <input type="text" name="tbxNewAlbumName" value="@Model._Album.Title" required/></p>
-                    <p>Artist: 
-                        <select name="ddmNewArtist">
-                            @foreach (Artist artist in @Model.Artists){
-                                //For look looks for the Album and Selects it in the dropdown automatically
-                                if (artist.ArtistId == Model._Album.ArtistId){
-                                    <option value="@artist.ArtistId" selected>@artist.Name</option>
-                                } else {
-                                    <option value="@artist.ArtistId">@artist.Name</option>
-                                }
-                            }
-                        </select>
-                    </p>
-                    <input type="hidden" name="hdnAlbumID" value="@Model._Album.AlbumId"/>
-                    <input type="submit" value="Update Album Data"/>
-                </form>
-            </section>
-        </div>
-
-        <!-- Deletion Section -->
-        <div style="display:flex;">
-            <section>
-                <h3>Delete Track</h3>
-                <form action="~/Delete/DeleteTrack" method="post">
-                    @Html.AntiForgeryToken()
-                    <p>Select Track:
-                        <select name="ddmSelTrack" required>
-                            @foreach (AlbumTrack track in @Model.AlbumTrack){
-                                <option value="@track.TrackId">@track.Name</option>
-                            }
-                        </select>
-                    </p>
-                    <input type="submit" value="Delete Track Data"/>
-                </form>
-            </section>
-            <section>
-                <h3>Delete Album</h3>
-                <p>Watch out! Deleting an Album will remove all the songs within the album as well.</p>
-                <form action="~/Delete/DeleteAlbum" method="post">
-                    @Html.AntiForgeryToken()
-                    <input type="hidden" name="hdnAlbumID" value="@Model._Album.AlbumId"/>
-                    <input type="submit" value="Delete Album"/>
-                </form>
-            </section>
-        </div>
-    </body>
-</html> *@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -175,7 +8,7 @@
         <script src="/javascript/confirmation.js"></script>
         <link rel="stylesheet" href="/css/material_design.css">
         <link rel="stylesheet" href="/css/styles.css">
-        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="/css/details.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="View all albums currently within the Chinook Database">
@@ -208,7 +41,8 @@
             <ol>
                 @foreach (AlbumTrack track in @Model.AlbumTrack){
                     //Displays each Track name
-                    <li>@track.Name</li>
+                    <li><p class="track_name">@track.Name</p></li>
+                    <p class="metadata">@track.Composer | @((track.Milliseconds / 1000) / 60):@((track.Milliseconds / 1000) % 60) | @(track.Bytes / 1048576) MB | £@track.UnitPrice</p>
                 }
             </ol>
 
@@ -220,7 +54,10 @@
 
                     <form action="~/Insert/InsertTrack" method="post">
                         @Html.AntiForgeryToken()
-                        <p>Track Name: <input type="text" name="tbxTrackName" required/></p>                            <!-- Tracks Name, Requires input to prevent it being NULL -->
+                        <div class="input">
+                            <input class="text_box" type="text" id="tbxTrackName" name="tbxTrackName" placeholder=" " required>
+                            <label for="tbxTrackName">Track Name:</label>
+                        </div>                                                                                          <!-- Tracks Name, Requires input to prevent it being NULL -->
                         <p>Media Type:
                             <select style="width=100px" name="ddmMedia" required>
                                 @foreach (MediaType media in @Model.MediaTypes){
@@ -235,12 +72,31 @@
                                 }
                             </select>
                         </p>                                                                                            <!-- Genre Type, Populated drop down menu to prevent it being NULL -->
-                        <p>Composer: <input type="text" name="tbxComposerName"/></p>                                    <!-- Composer, Can be NULL -->
-                        <p>Length (ms): <input type="number" name="tbxLengthName" required/></p>                        <!-- Length in Milliseconds, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
-                        <p>Size (bytes): <input type="number" name="tbxSizeName" required/></p>                         <!-- File Size, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
-                        <p>Price (GBP): <input type="number" step="0.01" min="0.49" name="tbxPriceName" required/></p>  <!-- Price, Requires input and set to number to prevent incompatible types and prevent it being NULL and set to incriment by 1p (0.01) -->
+                        <div class="input">
+                            <input class="text_box" type="text" id="tbxComposerName" name="tbxComposerName" placeholder=" ">
+                            <label for="tbxComposerName">Composer:</label>
+                        </div>                                                                                          <!-- Composer, Can be NULL -->
+                        <div style="display:flex; width:150px;">
+                            <div class="input">
+                                <input class="text_box" type="number" id="tbxMinuteName" name="tbxMinuteName" placeholder=" " required>
+                                <label for="tbxMinuteName">MM</label>
+                            </div>
+                            <p>:</p>
+                            <div class="input">
+                                <input class="text_box" type="number" id="tbxSecondName" name="tbxSecondName" placeholder=" " required>
+                                <label for="tbxSecondName">SS</label>
+                            </div>
+                        </div>                                                                                          <!-- Length in Milliseconds, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
+                        <div class="input">
+                            <input class="text_box" type="number" id="tbxSizeName" name="tbxSizeName" placeholder=" " required>
+                            <label for="tbxSizeName">Size (MB):</label>
+                        </div>                                                                                          <!-- File Size, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
+                        <div class="input">
+                            <input class="text_box" type="number" step="0.01" min="0.49" id="tbxPriceName" name="tbxPriceName" placeholder=" " required>
+                            <label for="tbxPriceName">Price: £</label>
+                        </div>                                                                                          <!-- Price, Requires input and set to number to prevent incompatible types and prevent it being NULL and set to incriment by 1p (0.01) -->
                         <input type="hidden" name="hdnAlbumID" value="@Model._Album.AlbumId"/>                          <!-- AlbumId, Hidden from user prevent it being NULL and adds data to the correct album -->
-                        <input type="submit" value="Insert"/>                                                           <!-- Submits the form to add to the Database -->
+                        <input class="button" type="submit" value="Insert"/>                                                           <!-- Submits the form to add to the Database -->
                     </form>
                 </article>
 
@@ -250,8 +106,11 @@
 
                     <form action="~/Insert/InsertArtist" method="post">
                     @Html.AntiForgeryToken()
-                        <p>Artist Name: <input type="text" name="tbxArtistName" required/></p>
-                        <input type="submit" value="Insert"/>
+                        <div class="input">
+                            <input class="text_box" type="text" id="tbxArtistName" name="tbxArtistName" placeholder=" " required>
+                            <label for="tbxArtistName">Artist Name:</label>
+                        </div>
+                        <input class="button" type="submit" value="Insert"/>
                     </form>
                 </article>
             </div>
@@ -270,7 +129,10 @@
                                 }
                             </select>                          
                         </p>                                                                                            <!-- Select Tracks, Set Range of Tracks in the album to help prevent it being NULL -->
-                        <p>Track Name: <input type="text" name="tbxUpdateTrackName" required/></p>                      <!-- Tracks Name, Requires input to prevent it being NULL -->
+                        <div class="input">
+                            <input class="text_box" type="text" id="tbxUpdateTrackName" name="tbxUpdateTrackName" placeholder=" " required>
+                            <label for="tbxUpdateTrackName">Track Name:</label>
+                        </div>                                                                                          <!-- Tracks Name, Requires input to prevent it being NULL -->
                         <p>Album:
                             <select name="ddmUpdateAlbum" required>
                                 @foreach (Album album in @Model.Albums){
@@ -298,11 +160,30 @@
                                 }
                             </select>
                         </p>                                                                                                    <!-- Genre Type, Populated drop down menu to prevent it being NULL -->
-                        <p>Composer: <input type="text" name="tbxUpdateComposerName"/></p>                                      <!-- Composer, Can be NULL -->
-                        <p>Length (ms): <input type="number" name="tbxUpdateLengthName" required/></p>                          <!-- Length in Milliseconds, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
-                        <p>Size (bytes): <input type="number" name="tbxUpdateSizeName" required/></p>                           <!-- File Size, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
-                        <p>Price (GBP): <input type="number" step="0.01" min="0.49" name="tbxUpdatePriceName" required/></p>    <!-- Price, Requires input and set to number to prevent incompatible types and prevent it being NULL and set to incriment by 1p (0.01) -->
-                        <input type="submit" value="Update Track"/>                                                             <!-- Submits the form to update the track to the Database -->
+                        <div class="input">
+                            <input class="text_box" type="text" id="tbxUpdateComposerName" name="tbxUpdateComposerName" placeholder=" ">
+                            <label for="tbxUpdateComposerName">Composer:</label>
+                        </div>                                                                                          <!-- Composer, Can be NULL -->
+                        <div style="display:flex; width:150px;">
+                            <div class="input">
+                                <input class="text_box" type="number" id="tbxUpdateMinuteName" name="tbxUpdateMinuteName" placeholder=" " required>
+                                <label for="tbxUpdateMinuteName">MM</label>
+                            </div>
+                            <p>:</p>
+                            <div class="input">
+                                <input class="text_box" type="number" id="tbxUpdateSecondName" name="tbxUpdateSecondName" placeholder=" " required>
+                                <label for="tbxUpdateSecondName">SS</label>
+                            </div>
+                        </div>                                                                                          <!-- Length in Milliseconds, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
+                        <div class="input">
+                            <input class="text_box" type="number" id="tbxUpdateSizeName" name="tbxUpdateSizeName" placeholder=" " required>
+                            <label for="tbxUpdateSizeName">Size (MB):</label>
+                        </div>                                                                                          <!-- File Size, Requires input and set to number to prevent incompatible types and prevent it being NULL -->
+                        <div class="input">
+                            <input class="text_box" type="number" step="0.01" min="0.49" id="tbxUpdatePriceName" name="tbxUpdatePriceName" placeholder=" " required>
+                            <label for="tbxUpdatePriceName">Price: £</label>
+                        </div>    <!-- Price, Requires input and set to number to prevent incompatible types and prevent it being NULL and set to incriment by 1p (0.01) -->
+                        <input class="button" type="submit" value="Update Track"/>                                                             <!-- Submits the form to update the track to the Database -->
                     </form>
                 </article>
 
@@ -311,7 +192,10 @@
                     <h3>Update Album</h3>
                     <form action="~/Update/UpdateAlbum" method="post">
                         @Html.AntiForgeryToken()
-                        <p>Update Album Name: <input type="text" name="tbxNewAlbumName" value="@Model._Album.Title" required/></p>
+                         <div class="input">
+                            <input class="text_box" type="text" id="tbxNewAlbumName" name="tbxNewAlbumName" value="@Model._Album.Title" required>
+                            <label for="tbxNewAlbumName">Album Name:</label>
+                        </div>
                         <p>Artist: 
                             <select name="ddmNewArtist">
                                 @foreach (Artist artist in @Model.Artists){
@@ -325,7 +209,7 @@
                             </select>
                         </p>
                         <input type="hidden" name="hdnAlbumID" value="@Model._Album.AlbumId"/>
-                        <input type="submit" value="Update Album Data"/>
+                        <input class="button" type="submit" value="Update Album Data"/>
                     </form>
                 </article>
             </div>
@@ -344,7 +228,7 @@
                                 }
                             </select>
                         </p>
-                        <p style="display: none;" id="delete_track_confirm">Are you sure?<br/>This cannot be undone!<input type="submit" value="Delete Track"/></p>
+                        <p style="display: none;" id="delete_track_confirm">Are you sure?<br/>This cannot be undone!<input class="button" type="submit" value="Delete Track"/></p>
                     </form>
                     <button id="delete_track" class="button" onclick="deleteTrackRequest()">Delete Track</button>
                 </article>
@@ -357,7 +241,7 @@
                         @Html.AntiForgeryToken()
                         <p>Watch out! Deleting an album will remove all the songs within the album as well.<br/>This cannot be undone!</p>
                         <input type="hidden" name="hdnAlbumID" value="@Model._Album.AlbumId"/>
-                        <p>Are you sure you want to delete the Album? <input type="submit" value="Yes"/></p>
+                        <p>Are you sure you want to delete the Album? <input class="button" type="submit" value="Yes"/></p>
                     </form>
                 </article>
             </div>

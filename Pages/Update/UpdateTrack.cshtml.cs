@@ -24,8 +24,8 @@ namespace Project.Pages{
             updTrack.MediaTypeId = Int32.Parse(Request.Form["ddmUpdateMedia"]);
             updTrack.GenreId = Int32.Parse(Request.Form["ddmUpdateGenre"]);
             updTrack.Composer = Request.Form["tbxUpdateComposerName"];
-            updTrack.Milliseconds = Int32.Parse(Request.Form["tbxUpdateLengthName"]);
-            updTrack.Bytes = Int32.Parse(Request.Form["tbxUpdateSizeName"]);
+            updTrack.Milliseconds = ((Int32.Parse(Request.Form["tbxUpdateMinuteName"]) * 60) + Int32.Parse(Request.Form["tbxUpdateSecondName"])) * 1000; //We are converting minutes to seconds, adding the remaining seconds then timesing it to get the milisecond
+            updTrack.Bytes = Int32.Parse(Request.Form["tbxUpdateSizeName"]) * 1048576; //We are taking in MB so we need to times it by 1048576 to get the bytes
             updTrack.UnitPrice = Double.Parse(Request.Form["tbxUpdatePriceName"]);
 
             //Updating the table then saving the Database

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "stifV5pDZxDwSpK9mUf5sxHM2Py+UAGsqmMWIZPCSo4=",
+  "Hash": "OcgHD+jOheC8nlF306E+CMo/j6PtTDXHJjp6PBIL/lU=",
   "Source": "Project",
   "BasePath": "_content/Project",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "/Users/aaronhamilton/IS/Project/wwwroot/css/details.css",
+      "SourceId": "Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/aaronhamilton/IS/Project/wwwroot/",
+      "BasePath": "_content/Project",
+      "RelativePath": "css/details.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/details.css"
+    },
     {
       "Identity": "/Users/aaronhamilton/IS/Project/wwwroot/css/index.css",
       "SourceId": "Project",

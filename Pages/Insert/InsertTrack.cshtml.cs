@@ -20,8 +20,8 @@ namespace Project.Pages{
                 MediaTypeId = Int32.Parse(Request.Form["ddmMedia"]),
                 GenreId = Int32.Parse(Request.Form["ddmGenre"]),
                 Composer = Request.Form["tbxComposerName"],
-                Milliseconds = Int32.Parse(Request.Form["tbxLengthName"]),
-                Bytes = Int32.Parse(Request.Form["tbxSizeName"]),
+                Milliseconds = ((Int32.Parse(Request.Form["tbxMinuteName"]) * 60) + Int32.Parse(Request.Form["tbxSecondName"])) * 1000, //We are converting minutes to seconds, adding the remaining seconds then timesing it to get the milisecond
+                Bytes = Int32.Parse(Request.Form["tbxSizeName"]) * 1048576, //We are taking in MB so we need to times it by 1048576 to get the bytes
                 UnitPrice = Double.Parse(Request.Form["tbxPriceName"]),
                 };
             

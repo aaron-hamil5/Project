@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/css/details.css",
+      "PackagePath": "staticwebassets/css/details.css"
+    },
+    {
       "Id": "/Users/aaronhamilton/IS/Project/wwwroot/css/index.css",
       "PackagePath": "staticwebassets/css/index.css"
     },
