@@ -5,10 +5,6 @@ namespace Project.Pages{
     public class InsertTrack : PageModel{
         public Int32 AlbumID {get; set;}
         public required String TrackName {get; set;}
-        public void OnGet()
-        {
-            
-        }
         public void OnPost()
         {
             AlbumID = Int32.Parse(Request.Form["hdnAlbumID"]);

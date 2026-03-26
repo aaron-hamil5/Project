@@ -27,6 +27,7 @@
             <nav>
                 <ul>
                     <li class="not_important"><a class="button button_header selected" href="/Index">Home</a></li>
+                    <li><a class="button button_header" href="/Insert/AddArtistAlbum">Add Album</a></li>
                     <li><img id="theme_toggle" src="/images/ui/dark_mode.webp" alt="Theme Toggle" onclick="toggleTheme()"></li>
                 </ul>
             </nav>
@@ -34,56 +35,6 @@
 
         <main>
             <h2>@Model.Heading</h2> <!-- Displays the page the user is on -->
-
-            <!-- This section is to add artist and albums to the database -->
-            <section style="display:flex; margin-bottom:15px; ">
-                <article class="left_side">
-
-                    <h3>Add Artist</h3>
-
-                    <form action="~/Insert/InsertArtist" method="post">
-                    @Html.AntiForgeryToken()
-
-                        <!-- Outline Text Box to input Artist Name -->
-                        <div class="input">
-                            <input class="text_box" type="text" id="tbxArtistName" name="tbxArtistName" placeholder=" " required>
-                            <label for="tbxArtistName">Artist Name:</label>
-                        </div>
-
-                        <!-- Button to add the Artist -->
-                        <input class="button" type="submit" value="Insert"/>
-                    </form>
-
-                </article>
-
-                <article class="right_side">
-
-                    <h3>Add Album</h3>
-
-                    <form action="~/Insert/InsertAlbum" method="post">
-                        @Html.AntiForgeryToken()
-
-                        <!-- Outline Text Box to input Album Name -->
-                        <div class="input">
-                            <input class="text_box" type="text" id="tbxAlbumName" name="tbxAlbumName" placeholder=" " required>
-                            <label for="tbxAlbumName">Album Name:</label>
-                        </div>
-
-                        <!-- Displays all artist in artist table, to prevent invalid data -->
-                        <p>Artist: 
-                            <select name="ddmArtist">
-                                @foreach (Artist artist in @Model.Artists){
-                                    <option value="@artist.ArtistId">@artist.Name</option>
-                                }
-                            </select>
-                        </p>
-
-                        <!-- Button to add the Album -->
-                        <input class="button" type="submit" value="Insert"/>
-                    </form>
-                </article>
-            </section>
-
             <search>
                 <form action="~/Search/Search" method="post" style="display: flex;">
                     @Html.AntiForgeryToken()
@@ -98,6 +49,22 @@
                         <input class="search_button" type="submit" value="Go"/>
                     </form>
             </search>
+
+            <section>
+                <form action="~/Index" method="post" style="display: flex;">
+                    @Html.AntiForgeryToken()
+
+                    <select name="ddmSort">
+                        <option value="0">Artist A-Z</option>
+                        <option value="1">Artist Z-A</option>
+                        <option value="2">Albums A-Z</option>
+                        <option value="3">Albums Z-A</option>
+                    </select>
+
+                        <!-- Button to add the Artist -->
+                        <input class="search_button" type="submit" value="Go"/>
+                    </form>
+            </section>
         
 
             <article class="card">

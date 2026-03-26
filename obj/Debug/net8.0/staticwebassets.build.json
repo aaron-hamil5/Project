@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OcgHD+jOheC8nlF306E+CMo/j6PtTDXHJjp6PBIL/lU=",
+  "Hash": "xtAdb1gbv3NzM6pzDBocElYkA3G8Pr8GNUaecj8KYx0=",
   "Source": "Project",
   "BasePath": "_content/Project",
   "Mode": "Default",
@@ -224,6 +224,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/javascript/confirmation.js"
+    },
+    {
+      "Identity": "/Users/aaronhamilton/IS/Project/wwwroot/javascript/expand_window.js",
+      "SourceId": "Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/aaronhamilton/IS/Project/wwwroot/",
+      "BasePath": "_content/Project",
+      "RelativePath": "javascript/expand_window.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/javascript/expand_window.js"
     },
     {
       "Identity": "/Users/aaronhamilton/IS/Project/wwwroot/javascript/toggle_theme.js",

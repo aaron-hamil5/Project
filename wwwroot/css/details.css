@@ -1,6 +1,6 @@
 .track_name{
     padding: 0;
-    margin: 5px 0 0 0;
+    margin: 0;
     font-size: large;
 }
 
@@ -10,5 +10,26 @@
     font-style: italic;
     font-size: x-small;
     padding: 0;
+    margin: 0 0 5px 0;
+}
+
+.modify_data{
+    margin-top: 50px;
+    height: 30px;
+    width: auto;
+    padding: 10px;
+    background-color: var(--md-sys-color-secondary-container);
+    overflow: hidden;
+    transition: height 0.3s;
+}
+
+.modify_data h3{
+    padding: 0;
     margin: 0;
+}
+
+.modify_title_bar{
+    height: auto;
+    width: 100%;
+    cursor: pointer;
 }

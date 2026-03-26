@@ -45,6 +45,10 @@
       "PackagePath": "staticwebassets/javascript/confirmation.js"
     },
     {
+      "Id": "/Users/aaronhamilton/IS/Project/wwwroot/javascript/expand_window.js",
+      "PackagePath": "staticwebassets/javascript/expand_window.js"
+    },
+    {
       "Id": "/Users/aaronhamilton/IS/Project/wwwroot/javascript/toggle_theme.js",
       "PackagePath": "staticwebassets/javascript/toggle_theme.js"
     },
