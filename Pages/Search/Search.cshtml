@@ -34,6 +34,8 @@
         </header>
 
         <main>
+
+            <!-- If there are results, display them, if not display a message saying no results were found and a search bar to search for something else. -->
             <article class="card">
                 <div class="card_header">
                     <img id="question_img" src="/images/album_cover_array.jpg">
@@ -57,7 +59,7 @@
                     </ul>
                 </article>
 
-                
+                <!-- If there are no results, display a message saying no results were found and a search bar to search for something else. -->
                 @if (@Model.NoResults){
                 <h3>Hmm... No results found in albums or artist. Want to search for something else?</h3>
                 <search>

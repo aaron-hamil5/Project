@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Project.Pages{
     public class ViewTracks : PageModel{
-        //Creating a variable to hold what section of the page the user is in
+        
         public required String Heading {get; set;}
         public required String AlbumName {get; set;}
         public required String ArtistName{get;set;}
@@ -21,12 +21,14 @@ namespace Project.Pages{
             Heading = "Viewing Tracks";
 
             ChinookDatabase db = new ChinookDatabase();
+
+            //Getting the data from the database and putting it into lists for the drop down menues, to prevent user inputting invalid data.
             Genres = db.Genres.ToList();
             MediaTypes = db.Media_Types.ToList();
             Artists = db.Artists.ToList();
             Albums = db.Albums.ToList();
 
-
+            //Finding the album by the id
             _Album = db.Albums.Single(f => f.AlbumId == Int32.Parse(Request.Form["hdnAlbumID"]));
 
             //Linking the Album and Tracks Table together

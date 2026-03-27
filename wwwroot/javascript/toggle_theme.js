@@ -42,3 +42,5 @@ function toggleTheme() {
     }
     setTheme();
 }
+
+//Deeply modified from UniqStudio.org, the original code save the preference in local storage, but I have removed that to prevent creating wasted files on the testers device.

@@ -6,7 +6,7 @@ namespace Project.Pages{
     public class InsertArtist : PageModel{
         public IActionResult OnPost()
         {
-            //Saving the text in a variable 
+            //Saving the same to a veriable to use to check if the album already exsits in the database.
             String artistName = Request.Form["tbxArtistName"];
             Artist insArtist = new Artist() { Name = Request.Form["tbxArtistName"] };
             

@@ -54,6 +54,7 @@
                 <form action="~/Index" method="post" style="display: flex;">
                     @Html.AntiForgeryToken()
 
+                    <!-- Dropdown menu to select the sorting method -->
                     <select name="ddmSort">
                         <option value="0">Artist A-Z</option>
                         <option value="1">Artist Z-A</option>
@@ -67,6 +68,7 @@
             </section>
         
 
+            <!-- Card to display the albums -->
             <article class="card">
                 <div class="card_header">
                     <img id="question_img" src="/images/album_cover_array.jpg">
@@ -74,6 +76,7 @@
                     <h2 id="Title">Viewing All Albums</h2>
                 </div>
                     <ul>
+                        <!-- Loop through each album -->
                         @foreach (ArtistAlbum album in @Model.ArtistAlbums){
                             <li class="answer_bar">
                                 <form action="~/Details" method="post">

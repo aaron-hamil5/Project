@@ -43,15 +43,21 @@
                 @foreach (AlbumTrack track in @Model.AlbumTrack){
                     //Displays each Track name
                     <li><p class="track_name">@track.Name</p></li>
+                    <!-- Displays the Composer, Length (converting the ms into minutes, then removing as many 60s from the ms to get the remaining seconds - to crudly explain the use of %), Size and Price of each track -->
                     <p class="metadata">@track.Composer | @((track.Milliseconds / 1000) / 60):@((track.Milliseconds / 1000) % 60) | @(track.Bytes / 1048576) MB | £@track.UnitPrice</p>
                 }
             </ol>
 
             <section class="modify_data" id="modify_window">
+
+                <!-- Title bar of the window -->
                 <section class="modify_title_bar" onclick="open_window()">
                     <h3>Modifiy Data</h3>
                     <p class="metadata">Click here to open.</p>
                 </section>
+
+
+
                 <!-- Adding Data Section -->
                 <div style="display:flex; margin-bottom:15px; ">
                     <article class="left_side">
@@ -101,11 +107,13 @@
                                 <label for="tbxPriceName">Price: £</label>
                             </div>                                                                                          <!-- Price, Requires input and set to number to prevent incompatible types and prevent it being NULL and set to incriment by 1p (0.01) -->
                             <input type="hidden" name="hdnAlbumID" value="@Model._Album.AlbumId"/>                          <!-- AlbumId, Hidden from user prevent it being NULL and adds data to the correct album -->
-                            <input class="button" type="submit" value="Insert"/>                                                           <!-- Submits the form to add to the Database -->
+                            <input class="button" type="submit" value="Insert"/>                                            <!-- Submits the form to add to the Database -->
                         </form>
                     </article>
 
                     
+
+
                     <article class="right_side">
                         <h3>Add Artist</h3>
 
@@ -115,10 +123,12 @@
                                 <input class="text_box" type="text" id="tbxArtistName" name="tbxArtistName" placeholder=" " required>
                                 <label for="tbxArtistName">Artist Name:</label>
                             </div>
-                            <input class="button" type="submit" value="Insert"/>
+                            <input class="button" type="submit" value="Insert"/> <!-- Submits the form to add Artist to the Database -->
                         </form>
                     </article>
                 </div>
+
+
 
                 <!-- Updating Data Section -->
                 <div style="display:flex; margin-bottom:15px; ">
@@ -192,6 +202,7 @@
                         </form>
                     </article>
 
+
                     
                     <article class="right_side">
                         <h3>Update Album</h3>
@@ -204,7 +215,7 @@
                             <p>Artist: 
                                 <select style="max-width: 200px; width: 100%;" name="ddmNewArtist">
                                     @foreach (Artist artist in @Model.Artists){
-                                        //For look looks for the Album and Selects it in the dropdown automatically
+                                        //For loop looks for the Album and Selects it in the dropdown automatically
                                         if (artist.ArtistId == Model._Album.ArtistId){
                                             <option value="@artist.ArtistId" selected>@artist.Name</option>
                                         } else {
@@ -218,6 +229,9 @@
                         </form>
                     </article>
                 </div>
+
+
+
 
                 <!-- Deleting Data Section -->
                 <div style="display:flex; margin-bottom:15px; ">
@@ -233,10 +247,13 @@
                                     }
                                 </select>
                             </p>
-                            <p style="display: none;" id="delete_track_confirm">Are you sure?<br/>This cannot be undone!<input class="button" type="submit" value="Delete Track"/></p>
+                            <p style="display: none;" id="delete_track_confirm">Are you sure?<br/>This cannot be undone!<input class="button" type="submit" value="Delete Track"/></p> <!-- Confirmation message and submit button, Hidden until the user clicks the delete button -->
                         </form>
-                        <button id="delete_track" class="button" onclick="deleteTrackRequest()">Delete Track</button>
+                        <button id="delete_track" class="button" onclick="deleteTrackRequest()">Delete Track</button> <!-- Button to trigger the confirmation message, Seperated from the form to prevent accidental deletion -->
                     </article>
+
+
+
 
                     
                     <article class="right_side">
@@ -244,11 +261,13 @@
                         <button id="delete_album" class="button" onclick="deleteAlbumRequest()">Delete Album</button>
                         <form style="display: none;" id="delete_album_confirm" action="~/Delete/DeleteAlbum" method="post">
                             @Html.AntiForgeryToken()
-                            <p>Watch out! Deleting an album will remove all the songs within the album as well.<br/>This cannot be undone!</p>
+                            <p>Watch out! Deleting an album will remove all the songs within the album as well.<br/>This cannot be undone!</p> <!-- Confirmation message and submit button, Hidden until the user clicks the delete button --> 
                             <input type="hidden" name="hdnAlbumID" value="@Model._Album.AlbumId"/>
-                            <p>Are you sure you want to delete the Album? <input class="button" type="submit" value="Yes"/></p>
+                            <p>Are you sure you want to delete the Album? <input class="button" type="submit" value="Yes"/></p> <!-- Button to trigger the confirmation message, Seperated from the form to prevent accidental deletion -->
                         </form>
                     </article>
+
+                    
                 </div>
             </section>
         </main>

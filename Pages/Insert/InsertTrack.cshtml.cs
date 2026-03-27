@@ -7,9 +7,11 @@ namespace Project.Pages{
         public required String TrackName {get; set;}
         public void OnPost()
         {
+            //Get the data from the form and save it to a variable to use to create a new Track object.
             AlbumID = Int32.Parse(Request.Form["hdnAlbumID"]);
             TrackName = Request.Form["tbxTrackName"];
             
+            //Creating a new Track object with the data from the form.
             Track insTrack = new Track() { 
                 Name = Request.Form["tbxTrackName"],
                 AlbumId = Int32.Parse(Request.Form["hdnAlbumID"]),
@@ -21,6 +23,7 @@ namespace Project.Pages{
                 UnitPrice = Double.Parse(Request.Form["tbxPriceName"]),
                 };
             
+            //Adding the new Track object to the database.
             ChinookDatabase db = new ChinookDatabase();
             db.Tracks.Add(insTrack);
             db.SaveChanges();
